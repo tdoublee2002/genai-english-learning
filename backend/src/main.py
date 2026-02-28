@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from .api.routers.exercises import router as exercises_router
 from .api.routers.health import router as health_router
 from .api.routers.progress import router as progress_router
 from .api.routers.vocab import router as vocab_router
@@ -29,4 +30,4 @@ API_PREFIX = "/api/v1"
 app.include_router(health_router, prefix=API_PREFIX)
 app.include_router(vocab_router, prefix=API_PREFIX)
 app.include_router(progress_router, prefix=API_PREFIX)
-
+app.include_router(exercises_router, prefix=API_PREFIX)

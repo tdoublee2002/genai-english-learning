@@ -36,3 +36,12 @@ class VocabRepository:
             .limit(limit)
         )
         return session.exec(stmt).all()
+    
+    def pick_next_for_practice(self, session: Session, *, user_label: str) -> VocabItem | None:
+        stmt = (
+            select(VocabItem)
+            .where(VocabItem.user_label == user_label)
+            .order_by(VocabItem.mastered.asc(), VocabItem.score.asc(), VocabItem.updated_at.asc())
+            .limit(1)
+        )
+        return session.exec(stmt).first()
