@@ -36,9 +36,6 @@ export function VocabAddForm({ onSubmit, disabled }: VocabAddFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="rounded-2xl border border-dashed border-violet-200 bg-violet-50/60 p-3 text-xs text-violet-700">
-        ตอนนี้กรอกแค่ <span className="font-semibold">word</span> ก็พอ ✨
-      </div>
       <div className="flex gap-2">
         <Input
           placeholder="Type a word (e.g., resilient)"
@@ -46,7 +43,11 @@ export function VocabAddForm({ onSubmit, disabled }: VocabAddFormProps) {
           onChange={(event) => setWord(event.target.value)}
           required
         />
-        <Button type="submit" disabled={disabled || submitting} className="shrink-0">
+        <Button
+          type="submit"
+          disabled={disabled || submitting}
+          className="shrink-0"
+        >
           <Sparkles className="mr-1 h-4 w-4" />
           {submitting ? "Adding..." : "Add"}
         </Button>
