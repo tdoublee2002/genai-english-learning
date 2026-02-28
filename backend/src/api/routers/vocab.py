@@ -4,7 +4,7 @@ from ...db.models import VocabItem
 from ...db.repositories.vocab import VocabRepository
 from ...utils.normalize import normalize_user_label, normalize_word
 from ..deps import SessionDep
-from ..schemas.vocab import VocabUpsert
+from ..schemas import VocabUpsert
 
 router = APIRouter(prefix="/vocab", tags=["vocab"])
 repo = VocabRepository()
