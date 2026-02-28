@@ -23,3 +23,15 @@ class GenerateExerciseResponse(BaseModel):
     vocab_item_id: int
     word: str
     quiz: QATemplate
+    
+class SubmitExercisePayload(BaseModel):
+    user_label: str = Field(..., min_length=1, max_length=64)
+    vocab_item_id: int
+    user_choice: int = Field(..., ge=1, le=4)
+    correct_answer: int = Field(..., ge=1, le=4)
+
+
+class SubmitExerciseResponse(BaseModel):
+    correct: bool
+    correct_answer: int
+    updated_vocab: dict

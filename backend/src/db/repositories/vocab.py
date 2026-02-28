@@ -11,6 +11,13 @@ class VocabRepository:
         )
         return session.exec(stmt).first()
 
+    def get_by_user_and_id(self, session: Session, *, user_label: str, vocab_item_id: int) -> VocabItem | None:
+        stmt = select(VocabItem).where(
+            VocabItem.user_label == user_label,
+            VocabItem.id == vocab_item_id,
+        )
+        return session.exec(stmt).first()
+
     def upsert(self, session: Session, *, item: VocabItem) -> VocabItem:
         existing = self.get_by_user_and_word(session, user_label=item.user_label, word=item.word)
         if existing:
