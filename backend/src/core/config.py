@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     
     database_url: str
     
+    # LLM
+    openai_api_key: str
+    llm_model: str
+    llm_timeout_s: int
+    
+    
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
