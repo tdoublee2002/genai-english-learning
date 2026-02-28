@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { BookOpenText, Brain, Trophy } from "lucide-react";
 import { UserLabelBar } from "@/components/UserLabelBar";
 import { VocabAddForm } from "@/components/VocabAddForm";
 import { VocabList } from "@/components/VocabList";
@@ -59,6 +60,8 @@ export default function HomePage() {
     if (!quiz) return null;
     return vocab.find((item) => item.id === quiz.vocab_item_id) ?? null;
   }, [quiz, quizResult, vocab]);
+
+  const masteredCount = useMemo(() => vocab.filter((item) => item.mastered).length, [vocab]);
 
   const handleAddVocab = async (payload: {
     word: string;
@@ -121,19 +124,37 @@ export default function HomePage() {
   };
 
   return (
-    <main className="mx-auto max-w-7xl space-y-6 px-4 py-8 md:px-8">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">genai-english-learning</h1>
-        <p className="text-muted-foreground">Learn words, run quizzes, and flex that vocabulary glow-up ✨</p>
+    <main className="mx-auto max-w-7xl space-y-6 px-4 py-8 md:px-8 lg:py-10">
+      <header className="overflow-hidden rounded-3xl border border-violet-200/60 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-3">
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">genai-english-learning</h1>
+            <p className="max-w-xl text-muted-foreground">Learn words, run quizzes, and flex that vocabulary glow-up ✨</p>
+          </div>
+          <div className="grid grid-cols-3 gap-2 rounded-2xl bg-violet-50/70 p-3">
+            <div className="rounded-xl bg-white px-3 py-2 text-center">
+              <p className="text-xs text-muted-foreground">Words</p>
+              <p className="text-lg font-semibold">{vocab.length}</p>
+            </div>
+            <div className="rounded-xl bg-white px-3 py-2 text-center">
+              <p className="text-xs text-muted-foreground">Mastered</p>
+              <p className="text-lg font-semibold">{masteredCount}</p>
+            </div>
+            <div className="rounded-xl bg-white px-3 py-2 text-center">
+              <p className="text-xs text-muted-foreground">Status</p>
+              <p className="text-sm font-semibold">POC</p>
+            </div>
+          </div>
+        </div>
       </header>
 
       <UserLabelBar userLabel={userLabel} onChange={setUserLabel} />
 
-      <section className="grid gap-6 lg:grid-cols-2">
-        <Card className="bg-white/90">
+      <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        <Card className="bg-white/90 shadow-md">
           <CardHeader>
-            <CardTitle>My Vocabulary</CardTitle>
-            <CardDescription>Add new words and keep your stack fresh.</CardDescription>
+            <CardTitle className="flex items-center gap-2"><BookOpenText className="h-5 w-5 text-violet-600" />My Vocabulary</CardTitle>
+            <CardDescription>Add a word quickly and build your personal stack.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             <VocabAddForm onSubmit={handleAddVocab} />
@@ -142,7 +163,19 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <div className="space-y-4">
+        <div className="space-y-4 xl:sticky xl:top-6 xl:self-start">
+          <Card className="bg-white/80">
+            <CardContent className="grid grid-cols-2 gap-3 p-4 text-sm">
+              <div className="rounded-xl bg-violet-50 p-3">
+                <p className="mb-1 flex items-center gap-1 text-xs text-muted-foreground"><Brain className="h-3.5 w-3.5" /> Quiz mood</p>
+                <p className="font-semibold">Focus mode on</p>
+              </div>
+              <div className="rounded-xl bg-violet-50 p-3">
+                <p className="mb-1 flex items-center gap-1 text-xs text-muted-foreground"><Trophy className="h-3.5 w-3.5" /> Goal</p>
+                <p className="font-semibold">1 right answer</p>
+              </div>
+            </CardContent>
+          </Card>
           <QuizCard
             quiz={quiz}
             result={quizResult}
