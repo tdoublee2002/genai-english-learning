@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 230 100% 99%;
+  --foreground: 230 24% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 230 24% 14%;
+  --primary: 252 88% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 249 100% 97%;
+  --secondary-foreground: 250 50% 30%;
+  --muted: 230 40% 96%;
+  --muted-foreground: 230 13% 44%;
+  --accent: 276 93% 95%;
+  --accent-foreground: 260 58% 32%;
+  --border: 235 32% 90%;
+  --input: 235 36% 89%;
+  --ring: 252 88% 62%;
+}
+
+body {
+  @apply min-h-screen bg-gradient-to-b from-violet-50 via-white to-indigo-50 text-foreground antialiased;
+}
