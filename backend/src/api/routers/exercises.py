@@ -1,9 +1,8 @@
 from fastapi import APIRouter, HTTPException
-from llm.client import LlmClient
-from pydantic import BaseModel, Field
 
 from ...api.deps import SessionDep
 from ...db.repositories.vocab import VocabRepository
+from ...llm.client import LlmClient
 from ...schemas.quiz import QATemplate
 from ...services.progress import VocabProgressService
 from ...services.quiz import QuizService
