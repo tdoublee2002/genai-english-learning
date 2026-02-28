@@ -1,28 +1,13 @@
 # genai-english-learning
 
-Internal POC frontend + backend for GenAI English vocabulary practice.
+Internal POC for GenAI English vocabulary practice.
 
-## Frontend (Next.js App Router)
+## Project structure
+- `backend/` FastAPI service.
+- `frontend/` Next.js App Router UI.
 
-### Prerequisites
-- Node.js 20+
-- Running backend API (default `http://localhost:8000`)
-
-### Setup
-1. Configure API base URL:
-   ```bash
-   export NEXT_PUBLIC_API_BASE=http://localhost:8000
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the dev server:
-   ```bash
-   npm run dev
-   ```
-
-Open [http://localhost:3000](http://localhost:3000).
+## Frontend
+See [`frontend/README.md`](frontend/README.md) for setup and run instructions.
 
 ## Backend
-See [`backend/README.md`](backend/README.md) for backend setup instructions.
+See [`backend/README.md`](backend/README.md) for setup instructions.
