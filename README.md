@@ -1,13 +1,25 @@
-# genai-english-learning
+# GenAI English Learning
 
-Internal POC for GenAI English vocabulary practice.
+Internal POC for English vocabulary practice with AI (frontend + backend).
 
 ## Project structure
-- `backend/` FastAPI service.
-- `frontend/` Next.js App Router UI.
+- `frontend/` : Next.js (UI)
+- `backend/` : FastAPI (API + DB)
 
-## Frontend
-See [`frontend/README.md`](frontend/README.md) for setup and run instructions.
+## Local run (quick order)
+1. Start backend first
+2. Start frontend second
 
-## Backend
-See [`backend/README.md`](backend/README.md) for setup instructions.
+Detailed setup:
+- Frontend: [`frontend/README.md`](frontend/README.md)
+- Backend: [`backend/README.md`](backend/README.md)
+
+## Run with Docker (optional)
+From repo root:
+
+```bash
+docker compose up --build
+```
+
+- Frontend: `http://localhost:3000`
+- Backend health: `http://localhost:8000/api/v1/health`
