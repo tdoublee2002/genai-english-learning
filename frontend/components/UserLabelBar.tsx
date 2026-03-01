@@ -18,10 +18,12 @@ export function UserLabelBar({ userLabel, onChange }: UserLabelBarProps) {
         <Input
           value={userLabel}
           onChange={(event) => onChange(event.target.value)}
-          placeholder="internal"
+          placeholder=""
           className="lg:max-w-sm"
         />
-        <p className="text-sm text-muted-foreground">Switch label to test multi-user vocab and quizzes ✨</p>
+        <p className="text-sm text-muted-foreground">
+          Switch label to test multi-user vocab and quizzes ✨
+        </p>
       </div>
     </div>
   );

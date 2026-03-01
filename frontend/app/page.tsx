@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
 import { generateQuiz, getVocab, submitAnswer, upsertVocab, type QuizResponse, type SubmitResponse, type VocabItem } from "@/lib/api";
 
-const DEFAULT_LABEL = "internal";
+const DEFAULT_LABEL = "";
 
 export default function HomePage() {
   const { toast } = useToast();
