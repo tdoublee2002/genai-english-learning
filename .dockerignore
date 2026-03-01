@@ -1,0 +1,11 @@
+.venv/
+**/__pycache__/
+**/*.pyc
+.env
+backend/.env
+.git
+.gitignore
+README.md
+node_modules/
+dist/
+build/
