@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      APP_NAME: genai-english-learning
+      ENV: dev
+      CORS_ORIGINS: http://localhost:3000
+      DATABASE_URL: sqlite:////app/data/app.db
+      OPENAI_API_KEY: dummy
+      LLM_MODEL: gpt-4o-mini
+      LLM_TIMEOUT_S: "30"
+    volumes:
+      - backend_data:/app/data
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE: http://localhost:8000
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  backend_data:
