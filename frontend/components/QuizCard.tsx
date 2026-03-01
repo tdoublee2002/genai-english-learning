@@ -40,7 +40,6 @@ export function QuizCard({ quiz, result, loading, submitting, error, onGenerate,
             transition={{ duration: 0.2 }}
             className="space-y-3"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Word: {quiz.word}</p>
             <p className="font-medium">{quiz.quiz.question}</p>
             <div className="grid gap-2">
               {choices.map((choice, index) => {
