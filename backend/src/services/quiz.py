@@ -38,6 +38,7 @@ class QuizService:
             temperature=0.2,
             max_tokens=400,
         )
+        quiz = self._shuffle_quiz_choices(quiz)
 
         if item.id is None:
             raise ValueError("vocab_missing_id")
@@ -47,4 +48,18 @@ class QuizService:
             word=item.word,
             quiz=quiz,
             template_index=template_index,
+        )
+        
+    def _shuffle_quiz_choices(self, qa: QATemplate) -> QATemplate:
+        choices = [qa.choice_1, qa.choice_2, qa.choice_3, qa.choice_4]
+        correct_choice = choices[qa.answer - 1]
+        random.shuffle(choices)
+        new_answer = choices.index(correct_choice) + 1
+        return QATemplate(
+            question=qa.question,
+            choice_1=choices[0],
+            choice_2=choices[1],
+            choice_3=choices[2],
+            choice_4=choices[3],
+            answer=new_answer,
         )
